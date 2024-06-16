@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "HOME WORKOUT",
+    "slug": "home-workout",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Logo_3.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/Logo_3.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.minhh2705.homeworkout"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Logo_3.png",
+        "backgroundColor": "#ffffff"
+    
+      },
+      "permissions": [
+        "NOTIFICATIONS"
+      ],
+      "package": "com.minhh2705.homeworkout"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f25a6f36-8f37-4249-ac96-7a1e0079742c"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/f25a6f36-8f37-4249-ac96-7a1e0079742c"
+    }
+  }
+}
