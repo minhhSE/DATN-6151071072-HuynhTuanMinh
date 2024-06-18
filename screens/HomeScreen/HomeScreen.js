@@ -59,16 +59,25 @@ const HomeScreen = () => {
       const unsubscribe = onSnapshot(
         q,
         (querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          setShowHiit(data[0].date.length >= 5);
-          if (data.length > 0) {
-            setBMI(data[0].bmi); // Assuming BMI is stored as a field in the document
+          if (!querySnapshot.empty) {
+            const data = querySnapshot.docs.map((doc) => doc.data());
+            const firstDoc = data[0];
+            if (firstDoc && firstDoc.date) {
+              setShowHiit(firstDoc.date.length >= 5);
+              setBMI(firstDoc.bmi); // Assuming BMI is stored as a field in the document
+            } else {
+              console.log("Document does not contain date or bmi field.");
+              setShowHiit(false);
+              setBMI(null);
+            }
           } else {
-            console.log("No such document!");
+            console.log("No documents found.");
+            setShowHiit(false);
+            setBMI(null);
           }
         },
         (error) => {
-          console.error("Error fetching BMI from Firestore: ", error);
+          console.error("Error fetching data from Firestore: ", error);
         }
       );
 

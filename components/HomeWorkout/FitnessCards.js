@@ -40,12 +40,18 @@ const FitnessCards = ({ recommendedWorkouts }) => {
       const unsubscribe = onSnapshot(
         q,
         (querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          setData(data[0].date.length);
-          setShowHiit(data[0].date.length >= 5);
+          if (!querySnapshot.empty) {
+            const docData = querySnapshot.docs[0].data();
+            const dateLength = docData?.date?.length || 0;
+            setData(dateLength);
+            setShowHiit(dateLength >= 5);
+          } else {
+            setData(0);
+            setShowHiit(false);
+          }
         },
         (error) => {
-          console.error("Error fetching BMI from Firestore: ", error);
+          console.error("Error fetching data from Firestore: ", error);
         }
       );
 
